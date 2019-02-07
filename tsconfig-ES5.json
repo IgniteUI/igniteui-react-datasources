@@ -1,0 +1,41 @@
+{
+    "compileOnSave": false,
+    "compilerOptions": {
+      "outDir": "./dist/ES5",
+      "sourceMap": false,
+      "importHelpers": true,
+      "declaration": true,
+      "moduleResolution": "node",
+      "downlevelIteration": true,
+      "allowUnreachableCode": true,
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "rootDir": "tmp/ES5",
+      "target": "es5",
+      "jsx": "react",
+      "module": "es2015",
+      "typeRoots": [
+        "node_modules/@types"
+      ],
+      "lib": [
+        "es2017",
+        "dom",
+        "scripthost"
+      ],
+      "baseUrl": ".",
+      "paths": {
+        "igniteui-react-core/ES5/*": ["node_modules/@infragistics/igniteui-react-core/ES5/*"],
+        "igniteui-react-charts/ES5/*": ["node_modules/@infragistics/igniteui-react-charts/ES5/*"],
+        "igniteui-react-grids/ES5/*": ["node_modules/@infragistics/igniteui-react-grids/ES5/*"],
+        "igniteui-react-gauges/ES5/*": ["node_modules/@infragistics/igniteui-react-gauges/ES5/*"],
+        "igniteui-react-datasources/ES5/*": ["node_modules/@infragistics/igniteui-react-datasources/ES5/*"]
+      },
+    },
+    "exclude": [
+      "dist/**/*.ts"
+    ],
+    "include": [
+      "tmp/ES5/**/*.ts",
+      "tmp/ES5/**/*.tsx"
+    ]
+  }

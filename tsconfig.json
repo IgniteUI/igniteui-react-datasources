@@ -1,0 +1,34 @@
+{
+    "compilerOptions": {
+      "baseUrl": ".",
+      "paths": {
+        "igniteui-core/*": ["node_modules/@infragistics/igniteui-react-core/ES5/*"],
+        "igniteui-charts/*": ["node_modules/@infragistics/igniteui-react-charts/ES5/*"],
+        "igniteui-grids/*": ["node_modules/@infragistics/igniteui-react-grids/ES5/*"],
+        "igniteui-gauges/*": ["node_modules/@infragistics/igniteui-react-gauges/ES5/*"],
+        "igniteui-datasources/*": ["node_modules/@infragistics/igniteui-react-datasources/ES5/*"]
+      },
+      "outDir": "dist",
+      "module": "esnext",
+      "target": "es5",
+      "lib": ["es6", "dom", "scripthost"],
+      "sourceMap": true,
+      "allowJs": true,
+      "jsx": "react",
+      "moduleResolution": "node",
+      "rootDir": "src",
+      "noImplicitReturns": true,
+      "noImplicitThis": false,
+      "noImplicitAny": false,
+      "importHelpers": true,
+      "downlevelIteration": true,
+      "suppressImplicitAnyIndexErrors": true
+    },
+    "exclude": [
+      "node_modules",
+      "build",
+      "gulpfile.js",
+      "dist",
+      "tmp"
+    ]
+  }
