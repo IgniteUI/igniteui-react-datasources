@@ -1,0 +1,3 @@
+[submodule "src/igniteui-datasources"]
+	path = src/igniteui-datasources
+	url = https://github.com/IgniteUI/igniteui-datasources
