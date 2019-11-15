@@ -1,7 +1,7 @@
 {
   "name": "igniteui-react-datasources",
-  "version": "1.0.0",
-  "description": "reference custom data providers for the Ignite UI React data source",
+  "version": "16.11.0",
+  "description": "Reference custom data providers for the Ignite UI React data source",
   "main": "index.js",
   "scripts": {
     "compileES5": "tsc -p tsconfig-ES5.json",
@@ -21,9 +21,10 @@
   },
   "homepage": "https://github.com/IgniteUI/igniteui-react-datasources#readme",
   "peerDependencies": {
-    "igniteui-react-core": "^16.6.3"
+    "igniteui-react-core": "^16.11.0-beta.4"
   },
   "dependencies": {
+    "igniteui-react-core": "^16.11.0-beta.4",
     "tslib": "^1.9.3"
   },
   "devDependencies": {
