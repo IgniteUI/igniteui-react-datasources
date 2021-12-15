@@ -21,17 +21,22 @@
   },
   "homepage": "https://github.com/IgniteUI/igniteui-react-datasources#readme",
   "peerDependencies": {
-    "igniteui-react-core": "^16.11.0-beta.4"
+    "igniteui-react-core": "^16.15.0"
   },
   "dependencies": {
-    "igniteui-react-core": "^16.11.0-beta.4",
+    "igniteui-react-core": "^16.15.0",
     "tslib": "^1.9.3"
   },
   "devDependencies": {
     "del": "^3.0.0",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.2",
     "gulp-flatten": "^0.4.0",
     "gulp-replace": "^1.0.0",
-    "gulp-run-sequence": "^0.3.2"
+    "gulp-run-sequence": "^0.3.2",
+    "react": "^16.0.0",
+    "@types/react": "^16.0.0",
+    "@types/react-dom": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "typescript": "^4.3.0"
   }
 }

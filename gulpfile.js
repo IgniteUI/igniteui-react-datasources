@@ -15,48 +15,54 @@ var packages = [
     ["igniteui-datasources", "igniteui-react-datasources"]
 ];
 
-gulp.task('clean:copyES5', function() {
-    return del.sync([
+gulp.task('clean:copyES5', function(cb) {
+    del.sync([
         "tmp/ES5/**/*.*"
     ]);
+    cb();
 });
 
-gulp.task('copyES5', ['clean:copyES5'], function(done) {
+gulp.task('copyES5', gulp.series('clean:copyES5', function(done) {
     return gulp.src([
         "src/**/*.*"
     ])
     .pipe(gulp.dest("tmp/ES5", { mode: "0777" }))
-});
+}));
 
-gulp.task('clean:copyES2015', function() {
-    return del.sync([
+gulp.task('clean:copyES2015', function(cb) {
+    del.sync([
         "tmp/ES2015/**/*.*"
     ]);
+    cb();
 });
 
-gulp.task('copyES2015', ['clean:copyES5'], function(done) {
+gulp.task('copyES2015', gulp.series('clean:copyES5', function(done) {
     return gulp.src([
         "src/**/*.*"
     ])
     .pipe(gulp.dest("tmp/ES2015", { mode: "0777" }))
-});
+}));
 
-gulp.task('clean:buildES5', function() {
+gulp.task('clean:buildES5', function(cb) {
     for (var i = 0; i < packages.length; i++) {
         del.sync("dist/" + packages[i][1] + "/ES5/**/*.*");
         del.sync("dist/" + packages[i][1] + "ES5");
     } 
     del.sync("dist/ES5/**/*.*");
-    return del.sync("dist/ES5");
+    del.sync("dist/ES5");
+
+    cb();
 });
 
-gulp.task('clean:buildES2015', function() {
+gulp.task('clean:buildES2015', function(cb) {
     for (var i = 0; i < packages.length; i++) {
         del.sync("dist/" + packages[i][1] + "/ES2015/**/*.*");
         del.sync("dist/" + packages[i][1] + "ES2015");
     } 
     del.sync("dist/ES2015/**/*.*");
-    return del.sync("dist/ES2015");
+    del.sync("dist/ES2015");
+
+    cb();
 });
 
 function buildProduct(callback, lang) {
@@ -101,7 +107,7 @@ function buildProduct(callback, lang) {
               'tmp/' + lang + '/**/*.ts',
               'tmp/' + lang + '/**/*.tsx'
             ])
-            .pipe(replace(regEx,'import {$1} from "' + packages[i][1] + '/' + lang + '/$2"'))
+            .pipe(replace(regEx,'import {$1} from "' + packages[i][1] + '"'))
             .pipe(gulp.dest("tmp/" + lang))
             .on("end", function () { continuation(i + 1) })
             .on("error", function (err) { callback(err) });
@@ -110,14 +116,14 @@ function buildProduct(callback, lang) {
     continuation(0);
 }
 
-gulp.task('buildES5', ['copyES5', 'clean:buildES5'], function(callback) {
+gulp.task('buildES5', gulp.series('copyES5', 'clean:buildES5', function(callback) {
     buildProduct(callback, "ES5");
-});
+}));
 
-gulp.task('buildES2015', ['copyES2015', 'clean:buildES2015'], function(callback) {
+gulp.task('buildES2015', gulp.series('copyES2015', 'clean:buildES2015', function(callback) {
     buildProduct(callback, "ES2015");
-});
+}));
 
 gulp.task('build', function(done) {
-   runSequence('buildES5', 'buildES2015');
+   return gulp.series('buildES5', 'buildES2015');
 });
