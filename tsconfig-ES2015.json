@@ -12,7 +12,7 @@
     "rootDir": "tmp/ES2015",
     "allowUnreachableCode": true,
     "target": "es2015",
-    "jsx": "react",
+    "jsx": "preserve",
     "module": "es2015",
     "typeRoots": [
       "node_modules/@types"
